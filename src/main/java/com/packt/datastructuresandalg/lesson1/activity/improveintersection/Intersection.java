@@ -45,7 +45,6 @@ public class Intersection {
             }
         }
         return intersect;
-        return ;
     }
 
     public void mergeSort(int[] input) {
