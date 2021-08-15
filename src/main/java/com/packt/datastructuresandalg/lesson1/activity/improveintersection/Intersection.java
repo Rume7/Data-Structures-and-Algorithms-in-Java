@@ -21,7 +21,31 @@ public class Intersection {
     }
 
     public List<Integer> intersectionFast(int[] a, int[] b) {
-        return null;
+        Map<Integer, Integer> map = new HashMap<>();
+        List<Integer> intersect = new ArrayList<>();
+
+        for (int i = 0; i < a.length; i++) {
+            if (map.containsKey(a[i])) {
+                int value = map.get(a[i]);
+                map.put(a[i], value+1);
+            } else {
+                map.put(a[i], 1);
+            }
+        }
+
+        for (int j = 0; j < b.length; j++) {
+            if (map.containsKey(b[j])) {
+                int value = map.get(b[j]);
+                if (value > 0) {
+                    intersect.add(b[j]);
+                    map.put(b[j], value-1);
+                } else {
+                    map.remove(b[j]);
+                }
+            }
+        }
+        return intersect;
+        return ;
     }
 
     public void mergeSort(int[] input) {
